@@ -36,12 +36,17 @@ def set_git_author(name: str, email: str) -> None:
     run(['git', 'config', 'user.email', email])
 
 
-def commit_all(message: str, when: datetime, name: str, email: str) -> None:
+def commit_all(message: str, when: datetime, name: str, email: str) -> bool:
     os.environ['GIT_AUTHOR_DATE'] = when.strftime('%Y-%m-%d %H:%M:%S +0000')
     os.environ['GIT_COMMITTER_DATE'] = os.environ['GIT_AUTHOR_DATE']
     set_git_author(name, email)
     run(['git', 'add', '-A'])
+    # Check if there is anything to commit
+    proc = subprocess.run(['git', 'diff', '--cached', '--quiet', '--exit-code'], cwd=str(REPO_DIR))
+    if proc.returncode == 0:
+        return False
     run(['git', 'commit', '-m', message])
+    return True
 
 
 def write_file(path: Path, content: str) -> None:
@@ -499,10 +504,11 @@ def main() -> None:
             # Pick author in round-robin
             author = accounts[author_index % len(accounts)]
             author_index += 1
-            author_counts[author['username']] += 1
             # Commit with timestamp
             when = dates[c_idx]
-            commit_all(message, when, author['username'], author['email'])
+            did_commit = commit_all(message, when, author['username'], author['email'])
+            if did_commit:
+                author_counts[author['username']] += 1
 
     # Ensure > 13 commits per account
     for user, cnt in author_counts.items():
