@@ -1,0 +1,14 @@
+{
+  "name": "MintLite Example #15",
+  "description": "Example NFT metadata used for testing and demos.",
+  "attributes": [
+    {
+      "trait_type": "rarity",
+      "value": "common"
+    },
+    {
+      "trait_type": "edition",
+      "value": 15
+    }
+  ]
+}
