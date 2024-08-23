@@ -1,3 +1,4 @@
 - Case 1: validate metadata schema for example 1.
 - Case 2: validate metadata schema for example 2.
 - Case 3: validate metadata schema for example 3.
+- Case 4: validate metadata schema for example 4.
