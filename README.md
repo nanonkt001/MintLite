@@ -10,3 +10,7 @@ Key capabilities:
 - L2 chains support (Polygon, Arbitrum)
 
 This repository contains smart contracts, a Next.js dApp, and scripts to deploy and test the system.
+
+## Getting Started
+
+Install dependencies, then run development server: `npm i && npm run dev`.
