@@ -14,3 +14,8 @@ This repository contains smart contracts, a Next.js dApp, and scripts to deploy 
 ## Getting Started
 
 Install dependencies, then run development server: `npm i && npm run dev`.
+
+## Roadmap
+- Batch mint UI
+- ERC-1155 support
+- Marketplace integration (optional)
