@@ -19,3 +19,6 @@ Install dependencies, then run development server: `npm i && npm run dev`.
 - Batch mint UI
 - ERC-1155 support
 - Marketplace integration (optional)
+
+## License
+MIT
